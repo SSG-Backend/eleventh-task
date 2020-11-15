@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  a(href="/auth/facebook" class="link facebook") Login with Facebook
+  a(href="/auth/google" class="link google") Login with Google
+  style.
+    .link{
+      display: inline-block;
+      width: 150px;
+      height: 30px;
+      margin: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .facebook{
+      background-color: blue;
+    }
+
+    .google {
+      background-color: red;
+    }
