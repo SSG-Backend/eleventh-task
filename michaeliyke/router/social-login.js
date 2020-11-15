@@ -32,16 +32,21 @@ passport.use(new GoogleStrategy({
   profileFields: ["id", "displayName", "name", "gender", "picture.type(large), email"]
 }, function(accessToken, refreshToken, profile, cb) {
 
-  const {id, provider} = profile;
-  const {email, name} = profile._json;
-  const [firstname, lastname, ...othernames] = name.split(" ");
-
-  log(profile);
-  log(accessToken)
-  cb(profile);
-  return profile;
+  const {id, provider: account_type} = profile;
+  const {email, name, picture} = profile._json;
+  const names = name.split(" ");
+  const [firstname, lastname] = names;
+  othernames = names.slice(2).join(" ");
+  // log(profile);
+  // return cb(profile);
   User.findOrCreate({
-    googleId: profile.id
+    id,
+    email,
+    name,
+    firstname,
+    lastname,
+    othernames,
+    account_type
   }, function(error, user) {
     return cb(error, user);
   });
@@ -53,14 +58,20 @@ passport.use(new FacebookStrategy({
   callbackURL: "http://localhost:3000/auth/facebook/cb",
   profileFields: ["id", "displayName", "name", "gender", "picture.type(large), email"]
 }, function(token, refreshToken, profile, cb) {
-  const {email, id, first_name, last_name, name, middle_name} = profile._json;
-  cb(profile);
-  return log(profile._json);
-  User.findOrCreate(profile.email, function(error, user) {
-    if (error) {
-      return cb(error);
-    }
-    return cb(null, user);
+  const {provider: account_type} = profile;
+  const {email, id, first_name: firstname, picture, last_name: lastname, name, middle_name: othernames} = profile._json;
+  // log(profile);
+  // return cb(profile)
+  User.findOrCreate({
+    id,
+    name,
+    email,
+    firstname,
+    lastname,
+    othernames,
+    account_type
+  }, function(error, user) {
+    return cb(error, user);
   });
 }));
 

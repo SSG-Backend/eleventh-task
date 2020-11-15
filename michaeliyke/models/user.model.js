@@ -5,7 +5,14 @@ const PassportPortLocalMongoose = require("passport-local-mongoose");
 const {log} = console;
 
 const UserSchema = new mongoose.Schema({
-  account_type: String, // email || facebook || google || twitter || linkedin
+  id: {
+    type: String,
+    default: mongoose.Types.ObjectId()
+  },
+  account_type: {
+    type: String,
+    default: "email"
+  }, // email || facebook || google || twitter || linkedin
   email: {
     type: String,
     required: true,
@@ -43,7 +50,11 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre("save", function(next) {
   const user = this;
-  bcrypt.hash(user.password, 10, function(error, hash) {
+  if (!this.password && this.account_type != "email") {
+    log(this);
+    next();
+  }
+  bcrypt.hash(user.password || null, 10, function(error, hash) {
     if (error) {
       return next(error);
     }
