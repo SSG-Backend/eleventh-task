@@ -1,0 +1,35 @@
+#error-display{
+    display: none;
+    color: #8c0400;
+    font-family: caption;
+    font-size: 1.1em;
+    margin: 1em auto;
+    width: 90%;
+    line-height: 1.4;
+    background-color: #f0f0f0;
+    text-align: center;
+    border-radius: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  div.social {
+  text-align: center;
+}
+.social-signup{
+  margin-top: 1.8em;
+  display: inline-block;
+}
+.social-signup ~ .social-signup{
+  margin-left: 2em;
+}
+
+.social-signup a{
+  color: #123456;
+  font-size: 1.3em;
+  text-decoration: none;
+}
+.social-signup a:hover{
+  color: blue;
+  text-decoration: underline;
+}

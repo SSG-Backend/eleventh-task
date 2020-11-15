@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login to your acount</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/login.util.css">
+   <link rel="icon" type="image/png" href="assets/images/icons/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="assets/js/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/forms.css">
+
+</head>
+<body>
+  
+  <div class="limiter">
+    <div class="container-login100" style="background-image: url('assets/images/bg-01.jpg');">
+      <div class="wrap-login100 p-t-30 p-b-50">
+        <span class="login100-form-title p-b-41">
+          Account Login
+        </span>
+        <form autocomplete method="POST" action="/login" class="login100-form validate-form p-b-33 p-t-5">
+        <div>
+          <p id="error-display"></p>
+        </div>
+          <div class="wrap-input100 validate-input" data-validate = "Enter a valid email address">
+            <input autocomplete class="input100" type="text" name="email" placeholder="Email address">
+            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Enter password">
+            <input autocomplete="false" class="input100" type="password" name="password" placeholder="Password">
+            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+          </div>
+
+          <div class="container-login100-form-btn m-t-32">
+            <button class="login100-form-btn">
+              Login
+            </button>
+
+          </div>
+          <div class="social">
+                        <p class="google-reg social-signup"> 
+                        <a href="/auth/google" title="Login using GOOGLE">GOOGLE</a>
+                        </p>
+                        <p class="fb-reg social-signup">
+                        <a href="/auth/facebook" title="Login using Facebook">Facebook</a>
+                        </p>
+                    </div>
+          <div class="not-registered">
+            <p>Not registered? <a href="/register">Sign up</a></p>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!-- <script src="assets/js/vendor/bootstrap/js/popper.js"></script> -->
+  <!-- <script src="assets/js/vendor/bootstrap/js/bootstrap.min.js"></script> -->
+  <script src="assets/js/login.js"></script>
+  <script src="assets/js/forms.js"></script>
+
+  <div id="dropDownSelect1"></div>
+  
+</body>
+</html>
